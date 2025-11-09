@@ -1,2 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+  --color-primary: #ff6900;
+  --color-secondary: #ed5600;
+  --color-base-100: #fff;
+  --color-base-200: #627382;
+  --color-base-300: #1e1e1e;
+  --color-gray-200: #e5e7eb;
+}
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: blue;
+  --color-secondary: teal;
+}
+
+@utility flex-center{
+  @apply flex items-center justify-center;
+}
+@theme{
+  --font-inter: "Inter", sans-serif;
+}
+.container{
+  @apply mx-auto px-6 lg:px-3.75 sm:px-8 md:px-7 md:max-w-full lg:max-w-[1000px] xl:max-w-[1260px] 2xl:max-w-[1470px];
+}
+html{
+  @apply text-[3.1vw] sm:text-[100%] md:text-[80%] lg:text-[75%] xl:text-[90%] 2xl:text-[100%]
+}
+body{
+  @apply bg-base-100 font-inter text-base text-base-300;
+}
+.button{
+  @apply bg-primary border-2 border-primary hover:bg-secondary hover:text-white hover:border-secondary text-white px-5 py-2 rounded-md font-medium transition-colors;
+}
+.button-outline{
+  @apply font-medium border-2 py-2 px-5 rounded-md border-primary text-primary hover:bg-secondary hover:text-white hover:border-secondary transition-colors;
+}
+.active{
+  @apply text-primary;
+}
