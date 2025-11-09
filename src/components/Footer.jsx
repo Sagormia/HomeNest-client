@@ -46,7 +46,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className="px-3.75 mt-9 w-6/12 sm:w-auto">
-                        <h2 className="text-white font-semibold text-xl">Social Links</h2>
+                        <h2 className="text-white font-semibold text-xl">Contact Info</h2>
                         <ul className="space-y-3.5 mt-4">
                             <li>
                                 <a href="#" className="hover:text-white flex items-center gap-2">

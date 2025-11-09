@@ -10,7 +10,7 @@
   --color-secondary: #ed5600;
   --color-accent: #c3c3c3;
   --color-base-100: #fff;
-  --color-base-200: #627382;
+  --color-base-200: #575757;
   --color-base-300: #1e1e1e;
   --color-gray-200: #e5e7eb;
 }
@@ -21,8 +21,8 @@
   --color-secondary: #ed5600;
   --color-accent: #c3c3c3;
   --color-base-100: #1e0d00;
-  --color-base-200: #ffffff;
-  --color-base-300: #dddddd;
+  --color-base-200: #c3c3c3;
+  --color-base-300: #ffffff;
   --color-gray-200: #434343;
 }
 
@@ -39,7 +39,7 @@ html{
   @apply text-[3.4vw] sm:text-[100%] md:text-[80%] lg:text-[75%] xl:text-[90%] 2xl:text-[100%]
 }
 body{
-  @apply bg-base-100 font-inter text-base text-base-300;
+  @apply bg-base-100 font-inter text-base text-base-200;
 }
 .button{
   @apply cursor-pointer bg-primary border-2 border-primary hover:bg-secondary hover:text-white hover:border-secondary text-white px-5 py-2 rounded-md font-medium transition-colors inline-flex items-center justify-center;

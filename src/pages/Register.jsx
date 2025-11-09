@@ -4,7 +4,7 @@ const Register = () => {
             <title>Register</title>
             <div className="container">
                 <div className="max-w-lg mx-auto my-12 md:my-16 lg:my-20 bg-base-100 p-6 sm:p-8 rounded-xl border border-gray-200 shadow-lg shadow-gray-200">
-                    <h1 className="text-3xl font-bold">Register</h1>
+                    <h1 className="text-3xl font-bold text-base-300">Register</h1>
                     <p className="text-base-200 mt-2">Create a new account 👋</p>
                     <form action="#" className="mt-6">
                         <div className="flex flex-col space-y-4.5">

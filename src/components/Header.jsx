@@ -19,7 +19,7 @@ const Header = () => {
                         <div className="h-12 w-12 rounded-full flex-center bg-gradient-to-l from-primary to-secondary text-3xl text-white">
                             <RiHome8Line />
                         </div>
-                        <h1 className="text-2xl font-bold dark:text-white">Home<span className="text-primary">Nest</span></h1>
+                        <h1 className="text-2xl font-bold text-base-300">Home<span className="text-primary">Nest</span></h1>
                     </Link>
 
                     {/* Desktop Navigation */}
