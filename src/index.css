@@ -8,6 +8,7 @@
   color-scheme: light;
   --color-primary: #ff6900;
   --color-secondary: #ed5600;
+  --color-accent: #c3c3c3;
   --color-base-100: #fff;
   --color-base-200: #627382;
   --color-base-300: #1e1e1e;
@@ -15,8 +16,14 @@
 }
 @plugin "daisyui/theme" {
   name: "dark";
-  --color-primary: blue;
-  --color-secondary: teal;
+  color-scheme: dark;
+  --color-primary: #ff6900;
+  --color-secondary: #ed5600;
+  --color-accent: #c3c3c3;
+  --color-base-100: #1e0d00;
+  --color-base-200: #ffffff;
+  --color-base-300: #dddddd;
+  --color-gray-200: #434343;
 }
 
 @utility flex-center{
@@ -26,19 +33,19 @@
   --font-inter: "Inter", sans-serif;
 }
 .container{
-  @apply mx-auto px-6 lg:px-3.75 sm:px-8 md:px-7 md:max-w-full lg:max-w-[1000px] xl:max-w-[1260px] 2xl:max-w-[1470px];
+  @apply mx-auto px-5 lg:px-3.75 sm:px-8 md:px-7 md:max-w-full lg:max-w-[1000px] xl:max-w-[1260px] 2xl:max-w-[1470px];
 }
 html{
-  @apply text-[3.1vw] sm:text-[100%] md:text-[80%] lg:text-[75%] xl:text-[90%] 2xl:text-[100%]
+  @apply text-[3.4vw] sm:text-[100%] md:text-[80%] lg:text-[75%] xl:text-[90%] 2xl:text-[100%]
 }
 body{
   @apply bg-base-100 font-inter text-base text-base-300;
 }
 .button{
-  @apply bg-primary border-2 border-primary hover:bg-secondary hover:text-white hover:border-secondary text-white px-5 py-2 rounded-md font-medium transition-colors;
+  @apply cursor-pointer bg-primary border-2 border-primary hover:bg-secondary hover:text-white hover:border-secondary text-white px-5 py-2 rounded-md font-medium transition-colors inline-flex items-center justify-center;
 }
 .button-outline{
-  @apply font-medium border-2 py-2 px-5 rounded-md border-primary text-primary hover:bg-secondary hover:text-white hover:border-secondary transition-colors;
+  @apply cursor-pointer font-medium border-2 py-2 px-5 rounded-md border-primary text-primary hover:bg-secondary hover:text-white hover:border-secondary transition-colors inline-flex items-center justify-center;
 }
 .active{
   @apply text-primary;

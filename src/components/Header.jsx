@@ -12,14 +12,14 @@ const Header = () => {
     ];
     return (
         <>
-            <header className={`fixed top-0 w-full z-50 transition-all duration-300 py-3.5 border-b border-gray-200`}>
+            <header className={`sticky top-0 w-full z-50 transition-all duration-300 py-3.5 bg-base-100 border-b border-gray-200`}>
                 <div className="container flex justify-between items-center">
                     {/* Logo */}
                     <Link href="/" className="flex gap-2 items-center z-50">
                         <div className="h-12 w-12 rounded-full flex-center bg-gradient-to-l from-primary to-secondary text-3xl text-white">
                             <RiHome8Line />
                         </div>
-                        <h1 className="text-2xl font-bold">Home<span className="text-primary">Nest</span></h1>
+                        <h1 className="text-2xl font-bold dark:text-white">Home<span className="text-primary">Nest</span></h1>
                     </Link>
 
                     {/* Desktop Navigation */}
