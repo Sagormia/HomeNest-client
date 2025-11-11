@@ -1,8 +1,12 @@
 import { Link, NavLink } from "react-router";
 import { RiHome8Line } from "react-icons/ri";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth/AuthContext";
+import Loader from "./Loader";
 
 
 const Header = () => {
+    const { user, loader, logOut } = useContext(AuthContext);
     const navigation = [
         { href: "/", label: "Home" },
         { href: "/all-properties", label: "All Properties" },
@@ -10,6 +14,7 @@ const Header = () => {
         { href: "/my-properties", label: "My Properties" },
         { href: "/my-ratings", label: "My Ratings" },
     ];
+
     return (
         <>
             <header className={`sticky top-0 w-full z-50 transition-all duration-300 py-3.5 bg-base-100 border-b border-gray-200`}>
@@ -56,15 +61,32 @@ const Header = () => {
                                     d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
                             </svg>
                         </label>
-                        <Link
-                            to="/login"
-                            className="button-outline"
-                        >
-                            Login
-                        </Link>
-                        <Link to="/register" className="button">
-                            Signup
-                        </Link>
+                        {
+                            loader ? <span className="loading loading-ring loading-xl"></span> :
+                                !user ?
+                                    <>
+                                        <Link
+                                            to="/login"
+                                            className="button-outline"
+                                        >
+                                            Login
+                                        </Link>
+                                        <Link to="/register" className="button">
+                                            Signup
+                                        </Link>
+                                    </>
+                                    :
+                                    <div className="dropdown dropdown-bottom dropdown-end">
+                                        <div tabIndex={0} role="button">
+                                            <img src={user.photoURL} alt="Profile" />
+                                        </div>
+                                        <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-lg shadow-gray-200 text-base-300">
+                                            <li>{user.displayName}</li>
+                                            <li>{user.email}</li>
+                                            <li><button onClick={logOut}>Logout</button></li>
+                                        </ul>
+                                    </div>
+                        }
                     </div>
                 </div>
             </header>

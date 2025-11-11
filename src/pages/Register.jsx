@@ -1,4 +1,37 @@
+import { Link } from "react-router";
+import SocialLogin from "../components/SocialLogin";
+import { updateProfile } from "firebase/auth";
+import { auth } from "../firebase/Firebase.config";
+import { toast } from "react-toastify";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth/AuthContext";
+
 const Register = () => {
+    const {userRegister} = useContext(AuthContext);
+
+
+    const handleRegister = (e) =>{
+        e.preventDefault();
+        const name = e.target.fname.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const photoUrl = e.target.photoUrl.value;
+
+        userRegister(email, password)
+        .then((result) => {
+            if(result.user){
+                updateProfile(auth.currentUser, {
+                    displayName: name,
+                    photoURL: photoUrl,
+                })
+                toast("Register Successfull");
+                e.target.reset();
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
     return (
         <>
             <title>Register</title>
@@ -6,7 +39,7 @@ const Register = () => {
                 <div className="max-w-lg mx-auto my-12 md:my-16 lg:my-20 bg-base-100 p-6 sm:p-8 rounded-xl border border-gray-200 shadow-lg shadow-gray-200">
                     <h1 className="text-3xl font-bold text-base-300">Register</h1>
                     <p className="text-base-200 mt-2">Create a new account 👋</p>
-                    <form action="#" className="mt-6">
+                    <form action="#" className="mt-6" onSubmit={handleRegister}>
                         <div className="flex flex-col space-y-4.5">
                             <label>
                                 <p className="font-medium pb-2">Full Name</p>
@@ -34,11 +67,9 @@ const Register = () => {
                                 <span className="flex-1 h-px bg-gray-200"></span>
                             </div>
 
-                            <button type="button" className="w-full font-medium cursor-pointer text-center py-3 border flex space-x-2 items-center justify-center border-gray-200 rounded-md hover:bg-gray-200 transition duration-150">
-                                <img src="https://www.svgrepo.com/show/355037/google.svg" className="w-5 h-5" alt="" /> <span>Login with Google</span>
-                            </button>
+                            <SocialLogin></SocialLogin>
 
-                            <p className="text-center">Already have an account? <a href="/login" className="text-primary font-medium inline-flex space-x-1 items-center hover:text-secondary"><span>Login</span></a></p>
+                            <p className="text-center">Already have an account? <Link to="/login" className="text-primary font-medium inline-flex space-x-1 items-center hover:text-secondary"><span>Login</span></Link></p>
                         </div>
                     </form>
                 </div>
