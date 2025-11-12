@@ -9,8 +9,8 @@ const PropertyDetails = () => {
     const [load, setLoader] = useState(false);
     const ratingRef = useRef(null);
     const [rating, setRating] = useState(0);
-
     const {id} = useParams();
+
     useEffect(() => {
         setLoader(true);
         fetch(`${import.meta.env.VITE_BASE_URL}/properties/${id}`)
@@ -33,47 +33,49 @@ const PropertyDetails = () => {
     }, []);
     return (
         <>
-            <div className="container">
+            <title>{datas.propertyName}</title>
+            <div className="container my-12 md:my-16 lg:my-20 text-lg">
                 {
                     load && <Loader></Loader>
                 }
-                <div>
-                    <div>
-                        <img src={datas.imgLink} alt="" />
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-7">
+                    <div className="relative">
+                        <img src={datas.imgLink} className="w-full rounded-xl" alt="" />
+                        <p className="absolute text-sm font-semibold py-1.5 min-w-24 text-center top-4 left-4 z-10 bg-primary rounded-full text-white px-4">{datas.category}</p>
                     </div>
-                    <div>
-                        <h2>{datas.propertyName}</h2>
+                    <div className="space-y-3">
+                        <h2 className="text-3xl font-bold text-base-300">{datas.propertyName}</h2>
                         <p>{datas.desc}</p>
-                        <p>{datas.price}</p>
-                        <p>{datas.category}</p>
-                        <p>{datas.location}</p>
-                        <p>{datas.postDate}</p>
+                        <p><strong>Price:</strong> ${datas?.price?.toLocaleString()}</p>
+                        <p><strong>Location:</strong> {datas.location}</p>
+                        <p><strong>Posted date:</strong> {datas.postDate}</p>
 
-                        <p>Posted by</p>
-                        <div>
-                            <img src={datas.profilePhoto} alt="" />
+                        <hr className="my-7 opacity-10" />
+                        <p><strong>Posted by</strong></p>
+                        <div className="flex gap-3 items-center">
+                            <img src={datas.profilePhoto} className="h-16 aspect-square rounded-full" alt="" />
                             <div>
                                 <p><strong>{datas.uname}</strong></p>
-                                <p>{datas.uemail}</p>
+                                <p className="text-base">{datas.uemail}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div>
-                    <h3>Ratings & Reviews</h3>
+                <hr className="mt-14 opacity-15" />
+                <div className="mt-14 max-w-2xl">
+                    <h3 className="text-2xl font-bold text-base-300 mb-7">Leave a comment</h3>
                     <form>
-                        <Rating
-                    style={{ maxWidth: 180 }}
-                    ref={ratingRef}
-                    value={rating}
-                    onChange={setRating}
-                    />
+                        <p className="font-medium pb-2">Rate your experience</p>
+                        <Rating style={{ maxWidth: 180 }} ref={ratingRef} value={rating} onChange={setRating}/>
                     
-                        <label>
-                            <p className="font-medium pb-2">Review Text</p>
-                            <textarea id="desc" name="desc" type="text" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="Enter property description" rows={4}></textarea>
+                        <label className="mt-5 block">
+                            <p className="font-medium pb-2">Your Feedback</p>
+                            <textarea id="desc" name="desc" type="text" className="w-full block py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="Write your feelings..." rows={4}></textarea>
                         </label>
+
+                        <div className="text-end mt-5">
+                            <button class="button">Submit Review</button>
+                        </div>
                     </form>
                 </div>
             </div>
