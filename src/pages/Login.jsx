@@ -6,31 +6,39 @@ import { AuthContext } from "../context/auth/AuthContext";
 import Loader from "../components/Loader";
 
 const Login = () => {
-    const {userLogin, user, loader} = useContext(AuthContext);
+    const { userLogin, user, loader } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    if(loader){
+    if (loader) {
         return <Loader></Loader>
     }
 
-    if(user){
+    if (user) {
         navigate("/");
     }
 
     const handleLogin = (e) => {
         e.preventDefault();
-        const email = e.target.email.value;
+
+        const email = e.target.email.value.trim();
         const password = e.target.password.value;
 
+        if (!email) return toast.error("Please enter your email.");
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) return toast.error("Please enter a valid email.");
+
+        if (!password) return toast.error("Please enter your password.");
+        if (password.length < 6) return toast.error("Password must be at least 6 characters.");
+
         userLogin(email, password)
-        .then(() => {
-            toast("Login Successfull")
-        })
-        .catch((err) => {
-            toast(err);
-            console.log(err);
-        })
-    }
+            .then(() => {
+                toast.success("Login Successful");
+            })
+            .catch((err) => {
+                toast.error(`Error: ${err.message || err}`);
+            });
+    };
     return (
         <>
             <title>Login</title>

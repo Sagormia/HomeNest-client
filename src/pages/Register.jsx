@@ -8,39 +8,53 @@ import { AuthContext } from "../context/auth/AuthContext";
 import Loader from "../components/Loader";
 
 const Register = () => {
-    const {userRegister, user, loader} = useContext(AuthContext);
+    const { userRegister, user, loader } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    if(loader){
+    if (loader) {
         return <Loader></Loader>
     }
 
-    if(user){
+    if (user) {
         navigate("/");
     }
 
-    const handleRegister = (e) =>{
+    const handleRegister = (e) => {
         e.preventDefault();
-        const name = e.target.fname.value;
-        const email = e.target.email.value;
+
+        const name = e.target.fname.value.trim();
+        const email = e.target.email.value.trim();
         const password = e.target.password.value;
-        const photoUrl = e.target.photoUrl.value;
+        const photoUrl = e.target.photoUrl.value.trim();
+
+        if (!name) return toast.error("Please enter your name.");
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailPattern.test(email)) return toast.error("Please enter a valid email.");
+
+        if (!password) return toast.error("Please enter a password.");
+        if (password.length < 6) return toast.error("Password must be at least 6 characters.");
+        if (!/[A-Z]/.test(password)) return toast.error("Password must contain at least one uppercase letter.");
+        if (!/[a-z]/.test(password)) return toast.error("Password must contain at least one lowercase letter.");
+
+        const urlPattern = /^(https?:\/\/)?([\w-]+(\.[\w-]+)+)([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?$/;
+        if (!photoUrl || !urlPattern.test(photoUrl)) return toast.error("Please enter a valid photo URL.");
 
         userRegister(email, password)
-        .then((result) => {
-            if(result.user){
-                updateProfile(auth.currentUser, {
-                    displayName: name,
-                    photoURL: photoUrl,
-                })
-                toast("Register Successfull");
-                e.target.reset();
-            }
-        })
-        .catch((error) => {
-            console.log(error);
-        })
-    }
+            .then((result) => {
+                if (result.user) {
+                    updateProfile(auth.currentUser, {
+                        displayName: name,
+                        photoURL: photoUrl,
+                    });
+                    toast.success("Register Successful");
+                    e.target.reset();
+                }
+            })
+            .catch((error) => {
+                toast.error(`Error: ${error.message}`);
+            });
+    };
     return (
         <>
             <title>Register</title>
