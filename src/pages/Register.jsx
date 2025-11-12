@@ -1,14 +1,23 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import SocialLogin from "../components/SocialLogin";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../firebase/Firebase.config";
 import { toast } from "react-toastify";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth/AuthContext";
+import Loader from "../components/Loader";
 
 const Register = () => {
-    const {userRegister} = useContext(AuthContext);
+    const {userRegister, user, loader} = useContext(AuthContext);
+    const navigate = useNavigate();
 
+    if(loader){
+        return <Loader></Loader>
+    }
+
+    if(user){
+        navigate("/");
+    }
 
     const handleRegister = (e) =>{
         e.preventDefault();
