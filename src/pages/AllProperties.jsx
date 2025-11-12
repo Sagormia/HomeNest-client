@@ -15,6 +15,7 @@ const AllProperties = () => {
     }, []);
     return (
         <>
+            <title>All Properties</title>
             <div className="py-16 md:py-20">
                 <div className="container">
                     <div className="text-center">

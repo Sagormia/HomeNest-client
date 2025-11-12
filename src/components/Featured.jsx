@@ -18,7 +18,7 @@ const Featured = () => {
                                 className="w-full aspect-video object-cover"
                             />
                             <div className="p-6">
-                                <p className="absolute text-sm font-semibold py-1.5 min-w-[6rem] text-center top-4 left-4 z-10 bg-primary rounded-full text-white px-4">Rent</p>
+                                <p className="absolute text-sm font-semibold py-1.5 min-w-24 text-center top-4 left-4 z-10 bg-primary rounded-full text-white px-4">Rent</p>
                                 <h2 className="text-2xl font-bold text-base-300">Sunny Villa</h2>
                                 <p className="mt-2 line-clamp-1">
                                     A beautiful villa with sea view and modern amenities.
@@ -41,7 +41,7 @@ const Featured = () => {
                                 className="w-full aspect-video object-cover"
                             />
                             <div className="p-6">
-                                <p className="absolute text-sm font-semibold py-1.5 min-w-[6rem] text-center top-4 left-4 z-10 bg-primary rounded-full text-white px-4">Sale</p>
+                                <p className="absolute text-sm font-semibold py-1.5 min-w-24 text-center top-4 left-4 z-10 bg-primary rounded-full text-white px-4">Sale</p>
                                 <h2 className="text-2xl font-bold text-base-300">Urban Apartment</h2>
                                 <p className="mt-2 line-clamp-1">
                                     Modern apartment in the heart of the city.
@@ -64,7 +64,7 @@ const Featured = () => {
                                 className="w-full aspect-video object-cover"
                             />
                             <div className="p-6">
-                                <p className="absolute text-sm font-semibold py-1.5 min-w-[6rem] text-center top-4 left-4 z-10 bg-primary rounded-full text-white px-4">Commercial</p>
+                                <p className="absolute text-sm font-semibold py-1.5 min-w-24 text-center top-4 left-4 z-10 bg-primary rounded-full text-white px-4">Commercial</p>
                                 <h2 className="text-2xl font-bold text-base-300">Cozy Cottage</h2>
                                 
                                 <p className="mt-2 line-clamp-1">
@@ -88,7 +88,7 @@ const Featured = () => {
                                 className="w-full aspect-video object-cover"
                             />
                             <div className="p-6">
-                                <p className="absolute text-sm font-semibold py-1.5 min-w-[6rem] text-center top-4 left-4 z-10 bg-primary rounded-full text-white px-4">Land</p>
+                                <p className="absolute text-sm font-semibold py-1.5 min-w-24 text-center top-4 left-4 z-10 bg-primary rounded-full text-white px-4">Land</p>
                                 <h2 className="text-2xl font-bold text-base-300">Luxury Penthouse</h2>
                                 <p className="mt-2 line-clamp-1">
                                     Top floor penthouse with panoramic city views.
@@ -111,7 +111,7 @@ const Featured = () => {
                                 className="w-full aspect-video object-cover"
                             />
                             <div className="p-6">
-                                 <p className="absolute text-sm font-semibold py-1.5 min-w-[6rem] text-center top-4 left-4 z-10 bg-primary rounded-full text-white px-4">Rent</p>
+                                 <p className="absolute text-sm font-semibold py-1.5 min-w-24 text-center top-4 left-4 z-10 bg-primary rounded-full text-white px-4">Rent</p>
                                 <h2 className="text-2xl font-bold text-base-300">Modern Townhouse</h2>
                                
                                 <p className="mt-2 line-clamp-1">
@@ -136,7 +136,7 @@ const Featured = () => {
                                 className="w-full aspect-video object-cover"
                             />
                             <div className="p-6">
-                                <p className="absolute text-sm font-semibold py-1.5 min-w-[6rem] text-center top-4 left-4 z-10 bg-primary rounded-full text-white px-4">Sale</p>
+                                <p className="absolute text-sm font-semibold py-1.5 min-w-24 text-center top-4 left-4 z-10 bg-primary rounded-full text-white px-4">Sale</p>
                                 <h2 className="text-2xl font-bold text-base-300">Beachfront Bungalow</h2>
                                 
                                 <p className="mt-2 line-clamp-1">

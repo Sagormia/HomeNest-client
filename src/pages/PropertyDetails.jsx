@@ -70,11 +70,11 @@ const PropertyDetails = () => {
                     
                         <label className="mt-5 block">
                             <p className="font-medium pb-2">Your Feedback</p>
-                            <textarea id="desc" name="desc" type="text" className="w-full block py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="Write your feelings..." rows={4}></textarea>
+                            <textarea id="desc" name="desc" className="w-full block py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="Write your feelings..." rows={4}></textarea>
                         </label>
 
                         <div className="text-end mt-5">
-                            <button class="button">Submit Review</button>
+                            <button className="button">Submit Review</button>
                         </div>
                     </form>
                 </div>

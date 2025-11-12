@@ -21,7 +21,7 @@ const Header = () => {
                 <div className="container flex justify-between items-center">
                     {/* Logo */}
                     <Link href="/" className="flex gap-2 items-center z-50">
-                        <div className="h-12 w-12 rounded-full flex-center bg-gradient-to-l from-primary to-secondary text-3xl text-white">
+                        <div className="h-12 w-12 rounded-full flex-center bg-linear-to-l from-primary to-secondary text-3xl text-white">
                             <RiHome8Line />
                         </div>
                         <h1 className="text-2xl font-bold text-base-300">Home<span className="text-primary">Nest</span></h1>

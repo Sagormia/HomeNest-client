@@ -66,7 +66,7 @@ const Register = () => {
                                 <p className="font-medium pb-2">Password</p>
                                 <input id="password" name="password" type="password" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="Enter your password" />
                             </label>
-                            <button className="button !py-2.75">
+                            <button className="button py-2.75!">
                                 <span>Register</span>
                             </button>
 

@@ -3,6 +3,7 @@ import errorImg from "../assets/error.png"
 const ErrorPage = () => {
     return (
         <>
+            <title>Page Not Found</title>
             <div className="container text-center py-5 min-h-screen flex-center flex-col">
                 <img src={errorImg} className="w-full max-w-[20rem] mx-auto" alt="" />
                 <h1 className="text-4xl lg:text-5xl font-semibold mt-6">Oops! Page Not Found</h1>

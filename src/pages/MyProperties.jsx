@@ -6,6 +6,7 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 const MyProperties = () => {
     return (
         <>
+            <title>My Properties</title>
             <div className="py-16 md:py-20">
                 <div className="container">
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-7 text-lg">
@@ -34,10 +35,10 @@ const MyProperties = () => {
                                 <Link to="/property-details" className="button w-full">
                                     View Details
                                 </Link>
-                                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="button !border-transparent !px-3 !bg-primary/35 !text-primary hover:!bg-primary hover:!text-white tooltip" data-tip="Update">
+                                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="button border-transparent! px-3! bg-primary/35! text-primary! hover:bg-primary! hover:text-white! tooltip" data-tip="Update">
                                     <MdModeEdit className="text-2xl" />
                                 </button>
-                                <button className="button !border-transparent !px-3 !bg-red-600/35 !text-red-600 hover:!bg-red-600 hover:!text-white tooltip" data-tip="Delete">
+                                <button className="button border-transparent! px-3! bg-red-600/35! text-red-600! hover:bg-red-600! hover:text-white! tooltip" data-tip="Delete">
                                     <RiDeleteBin6Line className="text-2xl" />
                                 </button>
                             </div>
@@ -67,10 +68,10 @@ const MyProperties = () => {
                                 <Link to="/property-details" className="button w-full">
                                     View Details
                                 </Link>
-                                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="button !border-transparent !px-3 !bg-primary/35 !text-primary hover:!bg-primary hover:!text-white tooltip" data-tip="Update">
+                                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="button border-transparent! px-3! bg-primary/35! text-primary! hover:bg-primary! hover:text-white! tooltip" data-tip="Update">
                                     <MdModeEdit className="text-2xl" />
                                 </button>
-                                <button className="button border-transparent! px-3! bg-red-600/35! text-red-600! hover:!bg-red-600! hover:text-white! tooltip" data-tip="Delete">
+                                <button className="button border-transparent! px-3! bg-red-600/35! text-red-600! hover:bg-red-600! hover:text-white! tooltip" data-tip="Delete">
                                     <RiDeleteBin6Line className="text-2xl" />
                                 </button>
                             </div>
@@ -101,10 +102,10 @@ const MyProperties = () => {
                                 <Link to="/property-details" className="button w-full">
                                     View Details
                                 </Link>
-                                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="button !border-transparent !px-3 !bg-primary/35 !text-primary hover:!bg-primary hover:!text-white tooltip" data-tip="Update">
+                                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="button border-transparent! px-3! bg-primary/35! text-primary! hover:bg-primary! hover:text-white! tooltip" data-tip="Update">
                                     <MdModeEdit className="text-2xl" />
                                 </button>
-                                <button className="button !border-transparent !px-3 !bg-red-600/35 !text-red-600 hover:!bg-red-600 hover:!text-white tooltip" data-tip="Delete">
+                                <button className="button border-transparent! px-3! bg-red-600/35! text-red-600! hover:bg-red-600! hover:text-white! tooltip" data-tip="Delete">
                                     <RiDeleteBin6Line className="text-2xl" />
                                 </button>
                             </div>
@@ -134,10 +135,10 @@ const MyProperties = () => {
                                 <Link to="/property-details" className="button w-full">
                                     View Details
                                 </Link>
-                                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="button !border-transparent !px-3 !bg-primary/35 !text-primary hover:!bg-primary hover:!text-white tooltip" data-tip="Update">
+                                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="button border-transparent! px-3! bg-primary/35! text-primary! hover:bg-primary! hover:text-white! tooltip" data-tip="Update">
                                     <MdModeEdit className="text-2xl" />
                                 </button>
-                                <button className="button !border-transparent !px-3 !bg-red-600/35 !text-red-600 hover:!bg-red-600 hover:!text-white tooltip" data-tip="Delete">
+                                <button className="button border-transparent! px-3! bg-red-600/35! text-red-600! hover:bg-red-600! hover:text-white! tooltip" data-tip="Delete">
                                     <RiDeleteBin6Line className="text-2xl" />
                                 </button>
                             </div>
@@ -168,10 +169,10 @@ const MyProperties = () => {
                                 <Link to="/property-details" className="button w-full">
                                     View Details
                                 </Link>
-                                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="button !border-transparent !px-3 !bg-primary/35 !text-primary hover:!bg-primary hover:!text-white tooltip" data-tip="Update">
+                                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="button border-transparent! px-3! bg-primary/35! text-primary! hover:bg-primary! hover:text-white! tooltip" data-tip="Update">
                                     <MdModeEdit className="text-2xl" />
                                 </button>
-                                <button className="button !border-transparent !px-3 !bg-red-600/35 !text-red-600 hover:!bg-red-600 hover:!text-white tooltip" data-tip="Delete">
+                                <button className="button border-transparent! px-3! bg-red-600/35! text-red-600! hover:bg-red-600! hover:text-white! tooltip" data-tip="Delete">
                                     <RiDeleteBin6Line className="text-2xl" />
                                 </button>
                             </div>
@@ -203,10 +204,10 @@ const MyProperties = () => {
                                 <Link to="/property-details" className="button w-full">
                                     View Details
                                 </Link>
-                                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="button !border-transparent !px-3 !bg-primary/35 !text-primary hover:!bg-primary hover:!text-white tooltip" data-tip="Update">
+                                <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="button border-transparent! px-3! bg-primary/35! text-primary! hover:bg-primary! hover:text-white! tooltip" data-tip="Update">
                                     <MdModeEdit className="text-2xl" />
                                 </button>
-                                <button className="button !border-transparent !px-3 !bg-red-600/35 !text-red-600 hover:!bg-red-600 hover:!text-white tooltip" data-tip="Delete">
+                                <button className="button border-transparent! px-3! bg-red-600/35! text-red-600! hover:bg-red-600! hover:text-white! tooltip" data-tip="Delete">
                                     <RiDeleteBin6Line className="text-2xl" />
                                 </button>
                             </div>
@@ -222,7 +223,7 @@ const MyProperties = () => {
                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <h3 className="text-3xl font-bold text-base-300">Update Property</h3>
-                    <p class="text-base-200 mt-2">Update your property details below 🏡</p>
+                    <p className="text-base-200 mt-2">Update your property details below 🏡</p>
                     <form action="#" className="mt-6">
                         <div className="flex flex-col space-y-4.5">
                             <div className="grid gap-4.5 grid-cols-1 sm:grid-cols-2">
@@ -269,7 +270,7 @@ const MyProperties = () => {
                                 <p className="font-medium pb-2">Description</p>
                                 <textarea id="desc" name="desc" type="text" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="Enter property description" rows={4}></textarea>
                             </label>
-                            <button className="button !py-2.75">
+                            <button className="button py-2.75!">
                                 <span>Update Property</span>
                             </button>
                         </div>
