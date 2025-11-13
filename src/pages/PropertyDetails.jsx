@@ -40,7 +40,7 @@ const PropertyDetails = () => {
                 }
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-7">
                     <div className="relative">
-                        <img src={datas.imgLink} className="w-full rounded-xl" alt="" />
+                        <img src={datas.imgLink} className="w-full aspect-5/3 object-cover rounded-xl" alt="" />
                         <p className="absolute text-sm font-semibold py-1.5 min-w-24 text-center top-4 left-4 z-10 bg-primary rounded-full text-white px-4">{datas.category}</p>
                     </div>
                     <div className="space-y-3">
