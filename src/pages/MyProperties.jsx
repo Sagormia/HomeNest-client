@@ -9,6 +9,8 @@ import { toast } from "react-toastify";
 const MyProperties = () => {
     const { user } = useContext(AuthContext);
     const [properties, setProperties] = useState([]);
+    const [selectedProperty, setSelectedProperty] = useState(null);
+
     useEffect(() => {
         if (!user?.email) return;
         fetch(`${import.meta.env.VITE_BASE_URL}/properties?email=${user.email}`)
@@ -55,6 +57,67 @@ const MyProperties = () => {
             { autoClose: false, closeOnClick: false, draggable: false, position: "top-center" }
         );
     };
+
+
+    // Open modal and prefill
+    const handleEdit = (property) => {
+        setSelectedProperty(property);
+        document.getElementById("my_modal_3").showModal();
+
+        property.target.reset();
+    };
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+        if (!selectedProperty) return;
+
+        const propertyName = e.target.pname.value.trim();
+        const price = e.target.price.value.trim();
+        const category = e.target.category.value.trim();
+        const location = e.target.location.value.trim();
+        const imgLink = e.target.photoUrl.value.trim();
+        const uemail = e.target.uemail.value.trim();
+        const uname = e.target.uname.value.trim();
+        const desc = e.target.desc.value.trim();
+
+        // === VALIDATIONS ===
+        if (!propertyName) return toast.error("Please enter a property name.");
+        if (!price || isNaN(price) || Number(price) <= 0)
+            return toast.error("Please enter a valid price greater than 0.");
+        if (!category) return toast.error("Please select a property category.");
+        if (!location) return toast.error("Please enter a location.");
+
+        const validUrlPattern =
+            /^(https?:\/\/)?([\w-]+(\.[\w-]+)+)([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?$/;
+        if (!imgLink || !validUrlPattern.test(imgLink))
+            return toast.error("Please enter a valid image URL.");
+
+        if (!desc || desc.length < 10)
+            return toast.error("Description must be at least 10 characters long.");
+
+        const updatedData = { propertyName, price, category, location, imgLink, uemail, uname, desc };
+
+        try {
+            const res = await fetch(`${import.meta.env.VITE_BASE_URL}/properties/${selectedProperty._id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(updatedData),
+            });
+            const data = await res.json();
+
+            if (data.success) {
+                setProperties(prev =>
+                    prev.map(p => (p._id === selectedProperty._id ? { ...p, ...updatedData } : p))
+                );
+                toast.success("Property updated successfully!");
+                document.getElementById("my_modal_3").close();
+            } else {
+                toast.error(data.message || "Update failed");
+            }
+        } catch {
+            toast.error("Update failed");
+        }
+    };
+
     return (
         <>
             <title>My Properties</title>
@@ -104,7 +167,7 @@ const MyProperties = () => {
                                             View Details
                                         </Link>
 
-                                        <button className="button border-transparent! px-3! bg-primary/35! text-primary! hover:bg-primary! hover:text-white!">
+                                        <button onClick={() => handleEdit(property)} className="button border-transparent! px-3! bg-primary/35! text-primary! hover:bg-primary! hover:text-white!">
                                             <MdModeEdit className="text-2xl" />
                                         </button>
 
@@ -127,23 +190,45 @@ const MyProperties = () => {
                     </form>
                     <h3 className="text-3xl font-bold text-base-300">Update Property</h3>
                     <p className="text-base-200 mt-2">Update your property details below 🏡</p>
-                    <form action="#" className="mt-6">
+                    <form onSubmit={handleUpdate} className="mt-6">
                         <div className="flex flex-col space-y-4.5">
                             <div className="grid gap-4.5 grid-cols-1 sm:grid-cols-2">
                                 <label>
                                     <p className="font-medium pb-2">Property Name</p>
-                                    <input id="pname" name="pname" type="text" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="Enter property name" />
+                                    <input
+                                        id="pname"
+                                        name="pname"
+                                        type="text"
+                                        className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow"
+                                        placeholder="Enter property name"
+                                        defaultValue={selectedProperty?.propertyName || ""}
+                                    />
                                 </label>
                                 <label>
                                     <p className="font-medium pb-2">Price</p>
-                                    <input id="price" name="price" type="number" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="Enter property price" />
+                                    <input
+                                        id="price"
+                                        name="price"
+                                        type="number"
+                                        className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow"
+                                        placeholder="Enter property price"
+                                        defaultValue={selectedProperty?.price || ""}
+                                    />
                                 </label>
                             </div>
+
                             <div className="grid gap-4.5 grid-cols-1 sm:grid-cols-2">
                                 <label>
                                     <p className="font-medium pb-2">Category</p>
-                                    <select defaultValue="Select Category" className="select h-auto text-base w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow">
-                                        <option disabled={true}>Select Category</option>
+                                    <select
+                                        value={selectedProperty?.category || "Select Category"}
+                                        onChange={(e) =>
+                                            setSelectedProperty((prev) => ({ ...prev, category: e.target.value }))
+                                        }
+                                        name="category"
+                                        className="select h-auto text-base w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow"
+                                    >
+                                        <option disabled>Select Category</option>
                                         <option>Rent</option>
                                         <option>Sale</option>
                                         <option>Commercial</option>
@@ -152,28 +237,51 @@ const MyProperties = () => {
                                 </label>
                                 <label>
                                     <p className="font-medium pb-2">Location</p>
-                                    <input id="location" name="location" type="text" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="(eg: city, area, or address)" />
+                                    <input
+                                        id="location"
+                                        name="location"
+                                        type="text"
+                                        className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow"
+                                        placeholder="(eg: city, area, or address)"
+                                        defaultValue={selectedProperty?.location || ""}
+                                    />
                                 </label>
                             </div>
+
                             <label>
                                 <p className="font-medium pb-2">Image Link</p>
-                                <input id="photoUrl" name="photoUrl" type="url" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="Enter property photo URL" />
+                                <input
+                                    id="photoUrl"
+                                    name="photoUrl"
+                                    type="url"
+                                    className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow"
+                                    placeholder="Enter property photo URL"
+                                    defaultValue={selectedProperty?.imgLink || ""}
+                                />
                             </label>
-                            <div className="grid gap-4.5 grid-cols-1 sm:grid-cols-2">
+                            <div className="grid gap-4.5 grid-cols-2">
                                 <label>
                                     <p className="font-medium pb-2">User Email</p>
-                                    <input id="uemail" name="uemail" type="email" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none read-only:bg-gray-200/50" readOnly />
+                                    <input value={user?.email} id="uemail" name="uemail" type="email" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none read-only:bg-gray-200/50" readOnly />
                                 </label>
                                 <label>
                                     <p className="font-medium pb-2">User Name</p>
-                                    <input id="uname" name="uname" type="text" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none read-only:bg-gray-200/50" readOnly />
+                                    <input value={user?.displayName} id="uname" name="uname" type="text" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none read-only:bg-gray-200/50" readOnly />
                                 </label>
-                            </div>
+                            </div>            
                             <label>
                                 <p className="font-medium pb-2">Description</p>
-                                <textarea id="desc" name="desc" type="text" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="Enter property description" rows={4}></textarea>
+                                <textarea
+                                    id="desc"
+                                    name="desc"
+                                    className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow"
+                                    placeholder="Enter property description"
+                                    rows={4}
+                                    defaultValue={selectedProperty?.desc || ""}
+                                />
                             </label>
-                            <button className="button py-2.75!">
+
+                            <button type="submit" className="button py-2.75!">
                                 <span>Update Property</span>
                             </button>
                         </div>
