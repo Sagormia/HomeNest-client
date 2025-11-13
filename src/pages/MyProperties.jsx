@@ -21,7 +21,7 @@ const MyProperties = () => {
 
     const handleDelete = (id) => {
         toast(
-            <div className="text-center">
+            <div className="text-center w-full">
                 <p className="font-medium text-black">Are you sure you want to delete this property?</p>
                 <div className="flex justify-center gap-3 mt-3">
                     <button

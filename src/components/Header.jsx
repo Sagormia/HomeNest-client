@@ -55,9 +55,9 @@ const Header = () => {
 
                     {/* Profile / Auth Buttons */}
                     {loader ? (
-                        <span className="loading loading-ring loading-xl"></span>
+                        <span className="loading loading-ring loading-xl hidden lg:block lg:mr-0"></span>
                     ) : !user ? (
-                        <div className="hidden lg:flex space-x-3">
+                        <div className="hidden lg:flex space-x-3 lg:mr-0">
                             <Link to="/login" className="button-outline">
                                 Login
                             </Link>
@@ -66,7 +66,7 @@ const Header = () => {
                             </Link>
                         </div>
                     ) : (
-                        <div className="hidden lg:block dropdown dropdown-bottom dropdown-end">
+                        <div className="hidden lg:block lg:mr-0 dropdown dropdown-bottom dropdown-end">
                             <div tabIndex={0} role="button" className="cursor-pointer">
                                 <img
                                     src={user?.photoURL}
@@ -141,12 +141,12 @@ const Header = () => {
                                     <img
                                         src={user?.photoURL}
                                         referrerPolicy="no-referrer"
-                                        className="h-10 w-10 rounded-full object-cover border"
+                                        className="h-12 w-12 rounded-full object-cover"
                                         alt="Profile"
                                     />
                                     <div>
                                         <p className="font-semibold">{user?.displayName}</p>
-                                        <p className="text-sm text-gray-500">{user?.email}</p>
+                                        <p className="text-sm">{user?.email}</p>
                                     </div>
                                 </div>
                                 <button
