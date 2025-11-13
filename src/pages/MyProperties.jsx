@@ -255,7 +255,7 @@ const MyProperties = () => {
                                     defaultValue={selectedProperty?.imgLink || ""}
                                 />
                             </label>
-                            <div className="grid gap-4.5 grid-cols-2">
+                            <div className="grid gap-4.5 grid-cols-1 sm:grid-cols-2">
                                 <label>
                                     <p className="font-medium pb-2">User Email</p>
                                     <input value={user?.email} id="uemail" name="uemail" type="email" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none read-only:bg-gray-200/50" readOnly />

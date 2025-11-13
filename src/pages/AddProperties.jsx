@@ -76,7 +76,7 @@ const AddProperties = () => {
                     <p className="text-base-200 mt-2">Add your property details below 🏡</p>
                     <form className="mt-6" onSubmit={handleSubmit}>
                         <div className="flex flex-col space-y-4.5">
-                            <div className="grid gap-4.5 grid-cols-2">
+                            <div className="grid gap-4.5 grid-cols-1 sm:grid-cols-2">
                                 <label>
                                     <p className="font-medium pb-2">Property Name</p>
                                     <input id="pname" name="pname" type="text" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="Enter property name" />
@@ -86,7 +86,7 @@ const AddProperties = () => {
                                     <input id="price" name="price" type="number" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="Enter property price" />
                                 </label>
                             </div>
-                            <div className="grid gap-4.5 grid-cols-2">
+                            <div className="grid gap-4.5 grid-cols-1 sm:grid-cols-2">
                                 <label>
                                     <p className="font-medium pb-2">Category</p>
                                     <select defaultValue='' name="category" className="select h-auto text-base w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow">
@@ -106,7 +106,7 @@ const AddProperties = () => {
                                 <p className="font-medium pb-2">Image Link</p>
                                 <input id="photoUrl" name="photoUrl" type="url" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="Enter property photo URL" />
                             </label>
-                            <div className="grid gap-4.5 grid-cols-2">
+                            <div className="grid gap-4.5 grid-cols-1 sm:grid-cols-2">
                                 <label>
                                     <p className="font-medium pb-2">User Email</p>
                                     <input value={user?.email} id="uemail" name="uemail" type="email" className="w-full py-3 border border-gray-200 rounded-md px-4 focus:outline-none read-only:bg-gray-200/50" readOnly />
