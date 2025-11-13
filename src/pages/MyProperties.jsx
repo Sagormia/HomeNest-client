@@ -16,6 +16,45 @@ const MyProperties = () => {
             .then(data => setProperties(data))
             .catch(() => toast.error("Failed to load properties"));
     }, [user]);
+
+    const handleDelete = (id) => {
+        toast(
+            <div className="text-center">
+                <p className="font-medium text-black">Are you sure you want to delete this property?</p>
+                <div className="flex justify-center gap-3 mt-3">
+                    <button
+                        className="px-6 py-1 bg-red-600 text-white cursor-pointer rounded-md"
+                        onClick={async () => {
+                            try {
+                                const res = await fetch(`${import.meta.env.VITE_BASE_URL}/properties/${id}`, {
+                                    method: "DELETE",
+                                });
+                                const data = await res.json();
+                                if (data.success) {
+                                    setProperties(prev => prev.filter(p => p._id !== id));
+                                    toast.dismiss();
+                                    toast.success("Property deleted successfully!");
+                                } else {
+                                    toast.error(data.message || "Delete failed");
+                                }
+                            } catch {
+                                toast.error("Delete failed");
+                            }
+                        }}
+                    >
+                        Yes
+                    </button>
+                    <button
+                        className="px-4 py-1 bg-gray-100 cursor-pointer text-black rounded-md"
+                        onClick={() => toast.dismiss()}
+                    >
+                        Cancel
+                    </button>
+                </div>
+            </div>,
+            { autoClose: false, closeOnClick: false, draggable: false, position: "top-center" }
+        );
+    };
     return (
         <>
             <title>My Properties</title>
@@ -69,7 +108,7 @@ const MyProperties = () => {
                                             <MdModeEdit className="text-2xl" />
                                         </button>
 
-                                        <button className="button border-transparent! px-3! bg-red-600/35! text-red-600! hover:bg-red-600! hover:text-white!">
+                                        <button onClick={() => handleDelete(property._id)} className="button border-transparent! px-3! bg-red-600/35! text-red-600! hover:bg-red-600! hover:text-white!">
                                             <RiDeleteBin6Line className="text-2xl" />
                                         </button>
                                     </div>
