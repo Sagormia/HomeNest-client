@@ -13,22 +13,22 @@ const WhyChoose = () => {
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-10 mt-10">
                         <div>
-                            <div className="h-18 w-18 flex-center mx-auto text-4xl bg-primary/15 text-secondary rounded-full"><TbHomeSearch /></div>
+                            <div className="h-18 w-18 flex-center mx-auto text-4xl bg-primary/15 text-primary rounded-full"><TbHomeSearch /></div>
                             <h3 className="font-bold text-2xl mt-4 text-base-300">Smart Search</h3>
                             <p className="mt-2 text-balance">Advanced filters to find properties that match your exact needs</p>
                         </div>
                         <div>
-                            <div className="h-18 w-18 flex-center mx-auto text-4xl bg-primary/15 text-secondary rounded-full"><GoVerified /></div>
+                            <div className="h-18 w-18 flex-center mx-auto text-4xl bg-primary/15 text-primary rounded-full"><GoVerified /></div>
                             <h3 className="font-bold text-2xl mt-4 text-base-300">Verified Listings</h3>
                             <p className="mt-2 text-balance">All properties are thoroughly verified for authenticity and accuracy</p>
                         </div>
                         <div>
-                            <div className="h-18 w-18 flex-center mx-auto text-4xl bg-primary/15 text-secondary rounded-full"><MdSupportAgent /></div>
+                            <div className="h-18 w-18 flex-center mx-auto text-4xl bg-primary/15 text-primary rounded-full"><MdSupportAgent /></div>
                             <h3 className="font-bold text-2xl mt-4 text-base-300">Expert Support</h3>
                             <p className="mt-2 text-balance">Professional agents ready to assist you throughout your journey</p>
                         </div>
                         <div>
-                            <div className="h-18 w-18 flex-center mx-auto text-4xl bg-primary/15 text-secondary rounded-full"><SlEnergy /></div>
+                            <div className="h-18 w-18 flex-center mx-auto text-4xl bg-primary/15 text-primary rounded-full"><SlEnergy /></div>
                             <h3 className="font-bold text-2xl mt-4 text-base-300">Quick Process</h3>
                             <p className="mt-2 text-balance">Streamlined processes to get you into your new home faster</p>
                         </div>

@@ -18,7 +18,7 @@ const Card = ({item}) => {
                     <p className="mt-2 line-clamp-1">{item.desc}</p>
                     <div className="flex items-center justify-between gap-2 mt-4">
                         <p className="flex items-center gap-1.5"><FaLocationDot className="text-primary"/> {item.location}</p>
-                        <p className="text-primary text-xl font-bold">${item?.price?.toLocaleString()}</p>
+                        <p className="text-primary text-xl font-bold">${parseInt(item?.price).toLocaleString()}</p>
                     </div>
                 </div>
                 <div className="p-6 pt-0 mt-auto">

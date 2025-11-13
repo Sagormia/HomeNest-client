@@ -58,3 +58,9 @@ body{
 .ratings .rr--off .rr--svg {
   @apply bg-base-100! fill-base-100 stroke-primary!;
 }
+.banner-slider .swiper-pagination-bullet {
+  @apply bg-white/80;
+}
+.banner-slider .swiper-pagination-bullet-active {
+  @apply bg-primary;
+}

@@ -1,36 +1,90 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 import Loader from "../components/Loader";
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
+import { toast } from "react-toastify";
+import { AuthContext } from "../context/auth/AuthContext";
+import { format } from "date-fns";
 
 const PropertyDetails = () => {
     const [datas, setDatas] = useState({});
     const [load, setLoader] = useState(false);
     const ratingRef = useRef(null);
     const [rating, setRating] = useState(0);
-    const {id} = useParams();
+    const { id } = useParams();
+
+    const {user} = useContext(AuthContext)
 
     useEffect(() => {
         setLoader(true);
         fetch(`${import.meta.env.VITE_BASE_URL}/properties/${id}`)
-        .then(res => res.json())
-        .then(data => {
-            setDatas(data);
-            setLoader(false);
-        })
+            .then(res => res.json())
+            .then(data => {
+                setDatas(data);
+                setLoader(false);
+            })
     }, [id]);
-    useEffect(() => {
-        const handleOutsideClick = (event) => {
-        if (!ratingRef.current.contains(event.target)) {
-            setRating(0);
+    // useEffect(() => {
+    //     const handleOutsideClick = (event) => {
+    //         if (!ratingRef.current.contains(event.target)) {
+    //             setRating(0);
+    //         }
+    //     };
+    //     document.addEventListener('click', handleOutsideClick);
+    //     return () => {
+    //         document.removeEventListener('click', handleOutsideClick);
+    //     };
+    // }, []);
+
+    const handleSubmitReview = (e) => {
+        e.preventDefault();
+        if (!user) {
+            toast.error("You must be logged in to submit a review.");
+            return;
         }
+        if (rating === 0) {
+            toast.error("Please select a rating.");
+            return;
+        }
+        const comment = e.target.desc.value.trim();
+        if (!comment) {
+            toast.error("Please write a review.");
+            return;
+        }
+        const reviewDate = format(new Date(), "dd MMM yyyy");
+        const reviewData = {
+            propertyId: id,
+            propertyName: datas.propertyName,
+            propertyThumbnail: datas.imgLink,
+            reviewerName: user.displayName,
+            reviewerEmail: user.email,
+            reviewerPhoto: user.photoURL,
+            rating,
+            comment,
+            reviewDate
         };
-        document.addEventListener('click', handleOutsideClick);
-        return () => {
-        document.removeEventListener('click', handleOutsideClick);
-        };
-    }, []);
+
+        fetch(`${import.meta.env.VITE_BASE_URL}/reviews`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(reviewData),
+        })
+            .then(res => res.json())
+            .then(result => {
+                if(result.acknowledged){
+                    toast.success("Review submitted successfully!");
+                    setRating(0);
+                    e.target.reset();
+                }else{
+                    toast.error("Failed to submit review.");
+                }
+            })
+            .catch(err => {
+                toast.error("Failed to submit review.");
+                console.error(err);
+            });
+    };
     return (
         <>
             <title>{datas.propertyName}</title>
@@ -64,10 +118,10 @@ const PropertyDetails = () => {
                 <hr className="mt-14 opacity-15" />
                 <div className="mt-14 max-w-2xl">
                     <h3 className="text-2xl font-bold text-base-300 mb-7">Leave a comment</h3>
-                    <form>
+                    <form onSubmit={handleSubmitReview}>
                         <p className="font-medium pb-2">Rate your experience</p>
-                        <Rating className="ratings" style={{ maxWidth: 180 }} ref={ratingRef} value={rating} onChange={setRating}/>
-                    
+                        <Rating className="ratings" style={{ maxWidth: 180 }} ref={ratingRef} value={rating} onChange={setRating} />
+
                         <label className="mt-5 block">
                             <p className="font-medium pb-2">Your Feedback</p>
                             <textarea id="desc" name="desc" className="w-full block py-3 border border-gray-200 rounded-md px-4 focus:outline-none focus:border-base-200 hover:shadow" placeholder="Write your feelings..." rows={4}></textarea>

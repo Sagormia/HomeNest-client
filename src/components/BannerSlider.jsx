@@ -34,17 +34,16 @@ const BannerSlider = () => {
     <Swiper
     modules={[Autoplay, Navigation, Pagination]}
     autoplay={{ delay: 5000 }}
-    navigation
     pagination={{ clickable: true }}
     loop={true}
-    className="w-full h-[400px] sm:h-[500px] md:h-[600px] overflow-hidden"
+    className="w-full h-100 sm:h-140 lg:h-160 overflow-hidden banner-slider"
     >
     {slides.map((slide, index) => (
         <SwiperSlide key={index}>
         <img src={slide.image} alt={slide.title} className="w-full h-full object-cover" />
-        <div className="absolute flex-center inset-0 text-white bg-black/50">
+        <div className="absolute flex-center inset-0 text-white bg-black/60">
             <div className="container text-center">
-                <h2 className="text-4xl lg:text-6xl font-bold">{slide.title}</h2>
+                <h2 className="text-4xl lg:text-5xl font-bold">{slide.title}</h2>
                 <p className="text-xl mt-4">{slide.subtitle}</p>
             </div>
         </div>

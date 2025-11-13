@@ -1,16 +1,24 @@
-# React + Vite
+# 🏡 HomeNest
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site:** [https://homenest-bysagor.netlify.app/](https://homenest-bysagor.netlify.app/)
 
-Currently, two official plugins are available:
+HomeNest is a modern **real estate listing platform** where property owners can post their available rentals or sale listings, and users can easily browse, search, and filter through a wide range of properties based on their preferences.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🏠 **Dynamic Property Listings** — Users can explore all available properties with images, prices, and descriptions fetched from the database.  
+- 🔍 **Advanced Search & Filter** — Filter and search properties by name, location, category, or price range with seamless API integration.  
+- 💬 **Review & Rating System** — Users can submit ratings and reviews for each property, helping others make informed decisions.  
+- 👤 **User Authentication** — Secure login and registration using Firebase, including Google Sign-In.  
+- 🌙 **Responsive & Themed UI** — Built with React and Tailwind CSS, featuring light/dark mode and full responsiveness for mobile, tablet, and desktop views.  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ⚙️ Tech Stack
+
+- **Frontend:** React, Tailwind CSS, DaisyUI  
+- **Backend:** Node.js, Express.js, MongoDB  
+- **Authentication:** Firebase  
+- **Hosting:** Netlify (Client), Vercel (Server)

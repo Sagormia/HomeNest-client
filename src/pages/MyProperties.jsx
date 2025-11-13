@@ -58,8 +58,6 @@ const MyProperties = () => {
         );
     };
 
-
-    // Open modal and prefill
     const handleEdit = (property) => {
         setSelectedProperty(property);
         document.getElementById("my_modal_3").showModal();
@@ -77,7 +75,6 @@ const MyProperties = () => {
         const uname = e.target.uname.value.trim();
         const desc = e.target.desc.value.trim();
 
-        // === VALIDATIONS ===
         if (!propertyName) return toast.error("Please enter a property name.");
         if (!price || isNaN(price) || Number(price) <= 0)
             return toast.error("Please enter a valid price greater than 0.");
@@ -156,7 +153,7 @@ const MyProperties = () => {
                                                 <FaLocationDot className="text-primary" /> {property.location}
                                             </p>
                                             <p className="text-primary text-xl font-bold">
-                                                ${property?.price?.toLocaleString()}
+                                                ${parseInt(property?.price).toLocaleString()}
                                             </p>
                                         </div>
                                     </div>

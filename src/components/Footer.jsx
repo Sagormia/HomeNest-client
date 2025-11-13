@@ -10,8 +10,8 @@ const Footer = () => {
             <div className="container">
                 <div className="flex flex-wrap items-start justify-between -mx-3.75">
                     <div className="px-3.75 mt-9 w-full lg:w-3/12">
-                        <Link href="/" className="flex gap-2 items-center z-50">
-                            <div className="h-12 w-12 rounded-full flex-center bg-gradient-to-l from-primary to-secondary text-3xl text-white">
+                        <Link to="/" className="flex gap-2 items-center z-50">
+                            <div className="h-12 w-12 rounded-full flex-center bg-linear-to-l from-primary to-secondary text-3xl text-white">
                                 <RiHome8Line />
                             </div>
                             <h1 className="text-2xl font-bold text-white">Home<span className="text-primary">Nest</span></h1>
@@ -21,19 +21,19 @@ const Footer = () => {
                     <div className="px-3.75 mt-9 w-6/12 sm:w-auto">
                         <h2 className="text-white font-semibold text-xl">Quick Links</h2>
                         <ul className="space-y-4 mt-4">
-                            <li><a href="#" className="hover:text-white">Home</a></li>
-                            <li><a href="#" className="hover:text-white">All Properties</a></li>
-                            <li><a href="#" className="hover:text-white">Add Properties</a></li>
-                            <li><a href="#" className="hover:text-white">My Properties</a></li>
+                            <li><Link to="/" className="hover:text-white">Home</Link></li>
+                            <li><Link to="/all-properties" className="hover:text-white">All Properties</Link></li>
+                            <li><Link to="/add-properties" className="hover:text-white">Add Properties</Link></li>
+                            <li><Link to="/my-properties" className="hover:text-white">My Properties</Link></li>
                         </ul>
                     </div>
                     <div className="px-3.75 mt-9 w-6/12 sm:w-auto">
                         <h2 className="text-white font-semibold text-xl">Services</h2>
                         <ul className="space-y-4 mt-4">
-                            <li><a href="#" className="hover:text-white">Buy Property</a></li>
-                            <li><a href="#" className="hover:text-white">Rent Property</a></li>
-                            <li><a href="#" className="hover:text-white">Sell Property</a></li>
-                            <li><a href="#" className="hover:text-white">Property Management</a></li>
+                            <li><Link to="/all-properties" className="hover:text-white">Buy Property</Link></li>
+                            <li><Link to="/all-properties" className="hover:text-white">Rent Property</Link></li>
+                            <li><Link to="/add-properties" className="hover:text-white">Sell Property</Link></li>
+                            <li><Link to="/my-properties" className="hover:text-white">Manage My Listings</Link></li>
                         </ul>
                     </div>
                     <div className="px-3.75 mt-9 w-6/12 sm:w-auto">
