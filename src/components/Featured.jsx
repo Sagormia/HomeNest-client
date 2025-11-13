@@ -7,14 +7,13 @@ const Featured = () => {
     const [load, setLoader] = useState(false);
     useEffect(() => {
         setLoader(true);
-        fetch(`${import.meta.env.VITE_BASE_URL}/properties`)
+        fetch(`${import.meta.env.VITE_BASE_URL}/properties?home=tue`)
             .then(res => res.json())
             .then(data => {
                 setDatas(data);
                 setLoader(false);
             })
     }, []);
-    const latestSix = datas.slice(0, 6);
     return (
         <>
             <div className="py-16 md:py-20">
@@ -28,7 +27,7 @@ const Featured = () => {
                             load && <div className="col-span-3"><Loader></Loader></div>
                         }
                         {
-                            latestSix.map(item => <Card key={item._id} item={item}></Card>)
+                            datas.map(item => <Card key={item._id} item={item}></Card>)
                         }
                     </div>
                 </div>

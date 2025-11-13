@@ -66,7 +66,7 @@ const PropertyDetails = () => {
                     <h3 className="text-2xl font-bold text-base-300 mb-7">Leave a comment</h3>
                     <form>
                         <p className="font-medium pb-2">Rate your experience</p>
-                        <Rating style={{ maxWidth: 180 }} ref={ratingRef} value={rating} onChange={setRating}/>
+                        <Rating className="ratings" style={{ maxWidth: 180 }} ref={ratingRef} value={rating} onChange={setRating}/>
                     
                         <label className="mt-5 block">
                             <p className="font-medium pb-2">Your Feedback</p>

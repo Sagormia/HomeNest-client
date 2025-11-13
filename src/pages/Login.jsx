@@ -6,15 +6,11 @@ import { AuthContext } from "../context/auth/AuthContext";
 import Loader from "../components/Loader";
 
 const Login = () => {
-    const { userLogin, user, loader } = useContext(AuthContext);
+    const { userLogin, loader } = useContext(AuthContext);
     const navigate = useNavigate();
 
     if (loader) {
         return <Loader></Loader>
-    }
-
-    if (user) {
-        navigate("/");
     }
 
     const handleLogin = (e) => {
@@ -34,6 +30,7 @@ const Login = () => {
         userLogin(email, password)
             .then(() => {
                 toast.success("Login Successful");
+                 navigate("/");
             })
             .catch((err) => {
                 toast.error(`Error: ${err.message || err}`);

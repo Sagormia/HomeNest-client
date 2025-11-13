@@ -78,10 +78,10 @@ const Header = () => {
                                     :
                                     <div className="dropdown dropdown-bottom dropdown-end">
                                         <div tabIndex={0} role="button" className="cursor-pointer">
-                                            <img key={user.photoURL} src={user.photoURL} referrerPolicy="no-referrer" className="h-10 w-10 rounded-full object-cover border-2 border-gray-200" alt="Profile" />
+                                            <img key={user?.photoURL} src={user?.photoURL} referrerPolicy="no-referrer" className="h-10 w-10 rounded-full object-cover border-2 border-gray-200" alt="Profile" />
                                         </div>
                                         <ul tabIndex="-1" className="dropdown-content menu bg-base-100 rounded-box z-1 min-w-52 p-4 shadow-lg shadow-gray-200 text-base-300 space-y-1">
-                                            <li className="font-bold text-lg">{user.displayName}</li>
+                                            <li className="font-bold text-lg">{user?.displayName}</li>
                                             <li>{user.email}</li>
                                             <li><button className="bg-red-600/20 font-medium text-base mt-2 text-red-600 justify-between hover:bg-red-600 hover:text-white" onClick={logOut}>Logout <AiOutlineLogout className="text-lg" /></button></li>
                                         </ul>

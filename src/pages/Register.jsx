@@ -8,15 +8,12 @@ import { AuthContext } from "../context/auth/AuthContext";
 import Loader from "../components/Loader";
 
 const Register = () => {
-    const { userRegister, user, loader } = useContext(AuthContext);
+    const { userRegister, loader, refreshUser } = useContext(AuthContext);
     const navigate = useNavigate();
+
 
     if (loader) {
         return <Loader></Loader>
-    }
-
-    if (user) {
-        navigate("/");
     }
 
     const handleRegister = (e) => {
@@ -46,9 +43,16 @@ const Register = () => {
                     updateProfile(auth.currentUser, {
                         displayName: name,
                         photoURL: photoUrl,
-                    });
-                    toast.success("Register Successful");
-                    e.target.reset();
+                    })
+                        .then(async () => {
+                            await refreshUser();
+                            toast.success("Register Successful");
+
+                            e.target.reset();
+                            navigate("/");
+                        })
+                        .catch((err) => toast.error(err.message));
+
                 }
             })
             .catch((error) => {

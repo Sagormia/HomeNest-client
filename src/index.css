@@ -50,3 +50,11 @@ body{
 .active{
   @apply text-primary;
 }
+
+.ratings .rr--on .rr--svg {
+  @apply bg-base-100! fill-primary border-primary stroke-primary!;
+}
+
+.ratings .rr--off .rr--svg {
+  @apply bg-base-100! fill-base-100 stroke-primary!;
+}

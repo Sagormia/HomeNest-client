@@ -63,8 +63,6 @@ const MyProperties = () => {
     const handleEdit = (property) => {
         setSelectedProperty(property);
         document.getElementById("my_modal_3").showModal();
-
-        property.target.reset();
     };
     const handleUpdate = async (e) => {
         e.preventDefault();
@@ -110,6 +108,7 @@ const MyProperties = () => {
                 );
                 toast.success("Property updated successfully!");
                 document.getElementById("my_modal_3").close();
+                e.target.reset();
             } else {
                 toast.error(data.message || "Update failed");
             }
